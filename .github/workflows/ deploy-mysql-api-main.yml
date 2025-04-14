@@ -1,11 +1,11 @@
-name: deploy-ms-api-V3
+name: deploy-mysql-api
 
 on:
   push:
     branches: ["master"]
 
 jobs:
-  deploy-ms-api:
+  deploy-mysql-api:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
