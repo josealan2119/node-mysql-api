@@ -16,8 +16,6 @@ jobs:
       - run: ls -la
       - run: touch .env
       - run: echo 'DATABASE_URL=${{secrets.PG_CONN}}'  >> .env
-      - run: echo 'TEST_DATABASE_URL=${{secrets.PG_CONN}}'  >> .env
-      - run: echo 'TEST_DATABASE_URL=${{secrets.PG_CONN}}'  >> .env
       - run: cat .env
       
       - run: npm install
