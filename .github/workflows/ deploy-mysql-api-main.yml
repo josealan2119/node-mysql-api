@@ -26,6 +26,10 @@ jobs:
       - run: docker build -t josealan2119/mysql-restapi:${{github.sha}} .
       - run: docker images
 
+      - run: docker run --name api-mysql -p 8083:8083 -d josealan2119/mysql-restapi:${{github.sha}} 
+      - run: docker ps
+      - run: docker exec api ls -la
+
       - name: docker login
         env:
           DOCKER_USER: ${{secrets.DOCKER_USER}}
