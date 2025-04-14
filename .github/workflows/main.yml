@@ -1,5 +1,4 @@
-
-name: deploy-ms-api-V2
+name: deploy-ms-api-V3
 
 on:
   push:
