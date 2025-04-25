@@ -15,24 +15,26 @@ jobs:
       - run: echo 'hello world ...'
       - run: ls -la
       - run: touch .env
-      - run: echo 'DATABASE_URL=${{secrets.PG_CONN}}'  >> .env
-      - run: echo 'TEST_DATABASE_URL=${{secrets.PG_CONN}}'  >> .env
-      - run: echo 'TEST_DATABASE_URL=${{secrets.PG_CONN}}'  >> .env
+      - run: echo 'DEV_DATABASE_URL=${{secrets.PG_CONN}}' >> .env
       - run: cat .env
-      
+
+      # Si necesitas instalar dependencias o hacer migraciones
       - run: npm install
-      - run: npm install -g sequelize-cli@6.2.0 
-      
+      - run: npm install -g sequelize-cli
       - run: sequelize db:migrate
 
       - run: docker build -t josealan2119/mysql-restapi:${{github.sha}} .
       - run: docker images
-   
+
+      - run: docker run --name api-mysql -p 8083:8083 -d josealan2119/mysql-restapi:${{github.sha}} 
+      - run: docker ps
+      - run: docker exec api-mysql ls -la
+
       - name: docker login
         env:
           DOCKER_USER: ${{secrets.DOCKER_USER}}
           DOCKER_PASSWORD: ${{secrets.DOCKER_PASSWORD}}
-        run:  docker login -u $DOCKER_USER -p $DOCKER_PASSWORD
-        
+        run: docker login -u $DOCKER_USER -p $DOCKER_PASSWORD
+
       - name: docker push
-        run:  docker push ${{ secrets.DOCKER_USER}}/mysql-restapi:${{github.sha}}
+        run: docker push ${{ secrets.DOCKER_USER}}/mysql-restapi:${{github.sha}}

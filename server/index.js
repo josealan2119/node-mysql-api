@@ -10,4 +10,8 @@ server.use(express.json());
 
 server.use('/api', routes);
 
+server.get('/', (req, res) => {
+    res.redirect('/api');
+  });
+
 module.exports = server;
