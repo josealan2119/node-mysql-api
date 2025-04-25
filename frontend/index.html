@@ -1,35 +1,39 @@
 <!DOCTYPE html>
-<html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Consumo de REST API de Usuarios</title>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="estilos.css">
+</head>
 <body>
-<p>
-Consumo de REST-API de Usuarios
-</p>
 
-<div>
-    <label>Name </label>
-    <input type="text" id="name">
-</div>
-<div>
-    <label>Email</label>
-    <input type="text" id="email">
-</div>
-<div>
-    <label>Age </label>
-    <input type="text" id="age">
-</div>
-<div>
-    <label>Comments </label>
-    <input type="text" id="comments">
-</div>
+  <h1>Consumo de REST API de Usuarios</h1>
 
-<button onclick="postUser()"> POST user </button>
-<button onclick="getUsers()"> GET usuarios </button>
+  <form id="userForm">
+    <label for="name">Nombre</label>
+    <input type="text" id="name" name="name" required>
 
-<div id="resultado"></div>
+    <label for="email">Correo electrónico</label>
+    <input type="text" id="email" name="email" required>
 
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-<script src="callrestapi.js"></script>
+    <label for="age">Edad</label>
+    <input type="text" id="age" name="age">
+
+    <label for="comments">Comentarios</label>
+    <input type="text" id="comments" name="comments">
+
+    <div class="button-group">
+      <button type="button" onclick="postUser()">POST Usuario</button>
+      <button type="button" onclick="getUsers()">GET Usuarios</button>
+    </div>
+  </form>
+
+  <div id="resultado"></div> <!-- Aquí se inyectará la tabla con los usuarios -->
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="callrestapi.js"></script>
 
 </body>
 </html>
-

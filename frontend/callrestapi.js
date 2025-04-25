@@ -30,6 +30,7 @@ function postUser() {
     });
 }
 
+
 function getUsers() {
     console.log(url);
 
