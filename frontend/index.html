@@ -2,38 +2,31 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Consumo de REST API de Usuarios</title>
-  <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+  <title>Gestión de Usuarios</title>
   <link rel="stylesheet" href="estilos.css">
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 </head>
 <body>
+  <div class="container">
+    <h1>Gestión de Usuarios</h1>
 
-  <h1>Consumo de REST API de Usuarios</h1>
+    <form id="userForm" class="card">
+      <input type="hidden" id="id">
+      <div class="form-row">
+        <input type="text" id="name" placeholder="Nombre" required>
+        <input type="email" id="email" placeholder="Correo electrónico" required>
+        <input type="number" id="age" placeholder="Edad" required>
+        <input type="text" id="comments" placeholder="Comentarios" required>
+      </div>
+      <div class="form-actions">
+        <button type="submit" class="btn primary">Guardar Usuario</button>
+        <button type="button" onclick="getUsers()" class="btn secondary">Cargar Usuarios</button>
+      </div>
+    </form>
 
-  <form id="userForm">
-    <label for="name">Nombre</label>
-    <input type="text" id="name" name="name" required>
+    <div id="resultado" class="card table-container"></div>
+  </div>
 
-    <label for="email">Correo electrónico</label>
-    <input type="text" id="email" name="email" required>
-
-    <label for="age">Edad</label>
-    <input type="text" id="age" name="age">
-
-    <label for="comments">Comentarios</label>
-    <input type="text" id="comments" name="comments">
-
-    <div class="button-group">
-      <button type="button" onclick="postUser()">POST Usuario</button>
-      <button type="button" onclick="getUsers()">GET Usuarios</button>
-    </div>
-  </form>
-
-  <div id="resultado"></div> <!-- Aquí se inyectará la tabla con los usuarios -->
-
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
   <script src="callrestapi.js"></script>
-
 </body>
 </html>
